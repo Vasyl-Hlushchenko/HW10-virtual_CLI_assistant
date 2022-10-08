@@ -13,20 +13,20 @@ class Record:
         self.name = Name(name)
         self.phone = Phone(phone)
         if phone:
-            self.optional_objects = [self.phone]
+            self.optional_objects = [Phone(phone)]
         else:
             self.optional_objects = []
 
     def add_phone(self, phone):
-        return self.optional_objects.append(self.phone)
+        self.optional_objects.append(Phone(phone))
 
     def delete_phone(self, phone):
-        if self.phone in self.optional_objects:
-            self.optional_objects.remove(self.phone)
+        if Phone(phone) in self.optional_objects:
+            self.optional_objects.remove(Phone(phone))
 
     def change_phone(self, phone, new_phone):
-        if self.phone in self.optional_objects:
-            self.optional_objects[self.optional_objects.index(self.phone)] = Phone(new_phone)
+        if Phone(phone) in self.optional_objects:
+            self.optional_objects[self.optional_objects.index(Phone(phone))] = Phone(new_phone)
 
 
 class Field:
