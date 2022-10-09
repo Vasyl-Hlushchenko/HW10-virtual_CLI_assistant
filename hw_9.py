@@ -36,7 +36,7 @@ def change_contact_handler(var):
 
 def show_contacts_handler():
     for name, record in CONTACTS.items():
-        print(f"{name}: {[phone.value for phone in record.optional_objects]}")
+        print(f"{name}: {[phone.value for phone in record.phones]}")
 
 
 @input_error
@@ -58,7 +58,7 @@ def add_contact_handler(var):
 def find_contact_handler(var):
     for name, record in CONTACTS.items():
         if name == var.split()[1]:
-            print(f"{name}: {[phone.value for phone in record.optional_objects]}")
+            print(f"{name}: {[phone.value for phone in record.phones]}")
 
 
 @input_error

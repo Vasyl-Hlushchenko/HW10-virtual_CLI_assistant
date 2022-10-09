@@ -11,24 +11,23 @@ class Record:
     #Класс Record, который отвечает за логику добавления/удаления/редактирования необязательных полей и хранения обязательного поля Name.
     def __init__(self, name, phone = None):
         self.name = Name(name)
-        self.phone = Phone(phone)
-        if Phone(phone):
-            self.optional_objects = [Phone(phone)]
+        if phone:
+            self.phones = [Phone(phone)]
         else:
-            self.optional_objects = []
+            self.phones = []
 
     def add_phone(self, phone):
-        self.optional_objects.append(Phone(phone))
+        self.phones.append(Phone(phone))
 
     def delete_phone(self, phone_for_delete):
-        for phone in self.optional_objects:
+        for phone in self.phones:
             if phone.value == phone_for_delete:
-                self.optional_objects.remove(phone)
+                self.phones.remove(phone)
 
     def change_phone(self, phone_for_change, new_phone):
-        for index, phone in enumerate(self.optional_objects):
+        for index, phone in enumerate(self.phones):
             if phone.value == phone_for_change:
-                self.optional_objects[index] = Phone(new_phone)
+                self.phones[index] = Phone(new_phone)
 
 
 class Field:
