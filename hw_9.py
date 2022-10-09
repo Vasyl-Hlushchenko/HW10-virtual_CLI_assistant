@@ -61,12 +61,21 @@ def find_contact_handler(var):
             print(f"{name}: {[phone.value for phone in record.optional_objects]}")
 
 
+@input_error
+def delete_contact_handler(var):
+    name = var.split()[1]
+    phone_for_delete = var.split()[2]
+    record = CONTACTS.data[name]
+    record.delete_phone(phone_for_delete)
+    print("Contact's phone was deleted")
+
+
 COMMANDS = {
     "hello": hello_handler,
     "show all": show_contacts_handler,
     "exit": quit_handler,
     "close": quit_handler,
-    "good bye": quit_handler,
+    "good bye": quit_handler
 }
 
 
@@ -79,6 +88,8 @@ def main():
             change_contact_handler(var)
         elif var.startswith('phone'):
             find_contact_handler(var)
+        elif var.startswith('delete'):
+            delete_contact_handler(var)
         elif var not in COMMANDS:
             print("Wrong command!")
             continue
